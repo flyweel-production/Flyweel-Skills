@@ -1,0 +1,82 @@
+{
+  "note": "Test questions used while building these skills. Run each with a fresh agent that has only the skill file and a connected Flyweel MCP server, read-only. See CONTRIBUTING.md.",
+  "evals": [
+    {
+      "id": 0,
+      "skill": "flyweel-card-top-up",
+      "prompt": "To make sure the ad accounts don't go down for 2 weeks, how much do I need to top up my balance? I'm also scaling 20% over the next week.",
+      "expected_output": "Opens with one amount and a pay-by date for the heavy case, then the normal amount. Shows room left, each card's pace, money spent but not charged yet, the spare charge, and what it assumed about the 20% rise. Two fresh runs on the same data give the same amounts.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "skill": "flyweel-card-top-up",
+      "prompt": "I can only put 500 in right now. How long does that keep the ads running?",
+      "expected_output": "Two dates, normal and heavy, with and without the 500. Says what the next payment after that needs to be.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "skill": "flyweel-card-top-up",
+      "prompt": "I want to run 4,000 a month through this card. How often do I need to pay it down, and is there an easier way?",
+      "expected_output": "An amount and how often, as weekdays. Which way of paying lands in time. The pay-once-up-front amount. Where the owner is today against the target. The limit a weekly payment would need.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "skill": "flyweel-card-top-up",
+      "prompt": "will anything decline?",
+      "expected_output": "Forecasts 7 days without being told a period. Safe, close, or the date the room runs out. Applies no planned change.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "skill": "flyweel-where-to-spend-next",
+      "prompt": "Meta signups are working. Where do I put more money this week, and how much?",
+      "expected_output": "One call per platform with a weekly amount. Finds the day spend last changed without being told. Gives the cost of each extra result. Flags a thin or lopsided result. Points funding to flyweel-card-top-up.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "skill": "flyweel-where-to-spend-next",
+      "prompt": "We're tight on cash. Which ad spend should I cut first?",
+      "expected_output": "Ranks platforms worst first with the weekly cash each frees. Zero-result lines first. Says cutting a platform Flyweel cannot see is a guess.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "skill": "flyweel-real-cash-payback",
+      "prompt": "For the real cash my cards paid over the last 60 days, what did I get back?",
+      "expected_output": "Card cash per platform, results, cost each, days from charge to result. Cash that went to an account Flyweel cannot see on its own line with no cost. No CRM is reported as not connected, never as zero deals. Ends with a fix list.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "skill": "flyweel-real-cash-payback",
+      "prompt": "Did September's ad spend pay off?",
+      "expected_output": "Answers in the first sentence at the level the data supports. Says what connecting the CRM would add.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "skill": "flyweel-mcp-deep-ad-analysis",
+      "prompt": "How did Meta, Google and TikTok do over the last 30 days, and what should I change?",
+      "expected_output": "Uses a named result such as registration, not the broad conversions count. Keeps currencies apart. Reports a missing CRM as a setup step. Ends with numbered actions.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "skill": "ad-performance-analyser-flyweel",
+      "prompt": "Here's our weekly campaign export. Cost per lead has jumped the last few weeks. Why, and what do I do?",
+      "expected_output": "Finds which campaign moved and when, and which part of the funnel. Flags thin samples. Says what the file does not state (currency, what conversions counts, revenue).",
+      "files": []
+    },
+    {
+      "id": 10,
+      "skill": "flyweel",
+      "prompt": "how's my ad money doing?",
+      "expected_output": "Checks setup, then a three-part rundown: what came back, whether the cards are safe, one thing to do.",
+      "files": []
+    }
+  ]
+}
