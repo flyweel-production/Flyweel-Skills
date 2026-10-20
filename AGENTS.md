@@ -6,7 +6,7 @@ Guidance for AI coding agents working in this repository.
 
 ## What this repo is
 
-Agent skills for the [Flyweel](https://flyweel.co) MCP server. The skills are plain text: there is no build and no package. Customers install them straight from GitHub with `npx skills add flyweel-production/Flyweel-Skills`, or as a Claude Code plugin.
+Agent skills for the [Flyweel](https://flyweel.co) MCP server. The skills are plain text: there is no build and no package. Customers install them straight from GitHub with `npx skills add flyweel-production/flyweel-skills`, or as a Claude Code plugin.
 
 `main` is what customers install. It is protected: changes go through a pull request and CI must pass.
 
