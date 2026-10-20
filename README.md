@@ -38,6 +38,8 @@ As a Claude Code plugin:
 /plugin install flyweel@flyweel
 ```
 
+The plugin also connects the Flyweel MCP server for you. Run `/mcp` and sign in to Flyweel.
+
 Restart your agent after installing so it picks the skills up.
 
 ## Before you start
@@ -50,6 +52,7 @@ Five of the six skills need the Flyweel MCP server connected to your agent. The 
    claude mcp add --transport http flyweel https://api.flyweel.co/functions/v1/mcp-server/mcp
    ```
    Then sign in when your agent asks.
+   Installed the Claude Code plugin? Skip this step. The plugin has already added the server.
 3. Connect at least one ad platform in Flyweel: Google Ads, Meta Ads or TikTok Ads.
 4. For the three card skills, have Flyweel cards set up and paying for your ads.
 5. A connected CRM is optional. With one, the skills can follow a lead all the way to revenue. Without one, they stop at what the ad platform counts and say so.

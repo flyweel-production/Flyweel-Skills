@@ -7,5 +7,11 @@
   "homepage": "https://flyweel.co",
   "repository": "https://github.com/flyweel-production/Flyweel-Skills",
   "license": "Apache-2.0",
-  "keywords": ["ads", "ad-spend", "mcp", "google-ads", "meta-ads", "tiktok-ads", "cards"]
+  "keywords": ["ads", "ad-spend", "mcp", "google-ads", "meta-ads", "tiktok-ads", "cards"],
+  "mcpServers": {
+    "flyweel": {
+      "type": "http",
+      "url": "https://api.flyweel.co/functions/v1/mcp-server/mcp"
+    }
+  }
 }

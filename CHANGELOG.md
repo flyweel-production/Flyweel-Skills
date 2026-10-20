@@ -15,6 +15,6 @@ First release from this repository.
 
 **Written for the business owner.** Every skill body and description scores 70 or more on reading ease and avoids a list of jargon words. `scripts/readability.py` checks it in CI.
 
-**Claude Code plugin manifest** added.
+**Claude Code plugin manifest** added. Installing the plugin also connects the Flyweel MCP server.
 
 Replaces the separate repos `flyweel-mcp-deep-ad-analysis`, `ad-performance-analyser-flyweel` and `flyweel-skill-cli`.
