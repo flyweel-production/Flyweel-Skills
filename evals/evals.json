@@ -1,5 +1,5 @@
 {
-  "note": "Test questions used while building these skills. Run each with a fresh agent that has only the skill file and a connected Flyweel MCP server, read-only. See CONTRIBUTING.md.",
+  "note": "Test questions used while building these skills. Run each with a fresh agent that has only the skill file and a connected Flyweel MCP server, read-only. Files in evals/files are made up. See CONTRIBUTING.md. Routing questions are in triggers.json.",
   "evals": [
     {
       "id": 0,
@@ -68,14 +68,76 @@
       "id": 9,
       "skill": "ad-performance-analyser-flyweel",
       "prompt": "Here's our weekly campaign export. Cost per lead has jumped the last few weeks. Why, and what do I do?",
-      "expected_output": "Finds which campaign moved and when, and which part of the funnel. Flags thin samples. Says what the file does not state (currency, what conversions counts, revenue).",
-      "files": []
+      "expected_output": "Puts most of the jump on Search - Generic from the week of 7 September, where conversion rate fell while click cost held, so the cause sits after the click. Flags Retargeting as too few results to read. Says what the file does not state: currency, what Conversions counts, no revenue.",
+      "files": [
+        "evals/files/weekly-export.csv"
+      ]
     },
     {
       "id": 10,
       "skill": "flyweel",
       "prompt": "how's my ad money doing?",
       "expected_output": "Checks setup, then a three-part rundown: what came back, whether the cards are safe, one thing to do.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "skill": "ad-performance-analyser-flyweel",
+      "prompt": "Write me a monthly ad report from this.",
+      "expected_output": "Uses the monthly layout from references/report-templates.md. States the period and that the file names no currency. Shows change as signed percentages. Flags that the latest week may be incomplete. Ends with numbered actions.",
+      "files": [
+        "evals/files/weekly-export.csv"
+      ]
+    },
+    {
+      "id": 12,
+      "skill": "ad-performance-analyser-flyweel",
+      "prompt": "Is the Meta video campaign wearing out?",
+      "expected_output": "Yes, with numbers: frequency rising past 3, click rate falling week on week while cost per thousand impressions held. Says how many weeks the trend covers and what to do about the creative.",
+      "files": [
+        "evals/files/weekly-export.csv"
+      ]
+    },
+    {
+      "id": 13,
+      "skill": "flyweel-mcp-deep-ad-analysis",
+      "prompt": "Which campaigns are wasting money?",
+      "expected_output": "Top campaigns by spend over 30 days with weekly trend over 90. Flags campaigns with real spend and no results, and cost per result rising three weeks running. Applies the sample-size rules. Keeps currencies apart.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "skill": "flyweel-mcp-deep-ad-analysis",
+      "prompt": "Where are my ads sending people?",
+      "expected_output": "Groups by destination_domain. Puts any domain the user may not recognise at the top as a possible account takeover. Gives spend and results per domain.",
+      "files": []
+    },
+    {
+      "id": 15,
+      "skill": "flyweel",
+      "prompt": "is everything set up right?",
+      "expected_output": "Short list of what works and what is missing from get_setup_status and list_cards, each gap with its fix. Checks for card charges from a platform whose spend Flyweel cannot see. Makes no changes.",
+      "files": []
+    },
+    {
+      "id": 16,
+      "skill": "flyweel",
+      "prompt": "I want to push Meta up 30% next week. Are we ok?",
+      "expected_output": "Routes to flyweel-card-top-up with a 30% rise on Meta as the planned change. Answers safe, close, or the top-up and pay-by date. Does not run the where-to-spend analysis unasked.",
+      "files": []
+    },
+    {
+      "id": 17,
+      "skill": "flyweel-where-to-spend-next",
+      "prompt": "Did the last budget increase on Google pay off?",
+      "expected_output": "Finds the change day on its own. Before and after windows with real cash, results and cost each. Gives the cost of each extra result and one call with a weekly amount, or hold with the reason.",
+      "files": []
+    },
+    {
+      "id": 18,
+      "skill": "flyweel-real-cash-payback",
+      "prompt": "What's our real cost per lead, and how long does ad spend take to come back?",
+      "expected_output": "Card cash per platform at the deepest depth the data supports, with the check that stopped a deeper one. Days from card charge to result, and says a negative number is real. Labels figures Paid and Counted.",
       "files": []
     }
   ]
