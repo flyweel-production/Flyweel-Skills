@@ -5,7 +5,7 @@
   "description": "Skills for the Flyweel MCP server: ad analysis, card funding checks, scaling decisions and cash payback.",
   "author": { "name": "Flyweel", "email": "hello@flyweel.co", "url": "https://flyweel.co" },
   "homepage": "https://flyweel.co",
-  "repository": "https://github.com/flyweel-production/Flyweel-Skills",
+  "repository": "https://github.com/flyweel-production/flyweel-skills",
   "license": "Apache-2.0",
   "keywords": ["ads", "ad-spend", "mcp", "google-ads", "meta-ads", "tiktok-ads", "cards"],
   "mcpServers": {

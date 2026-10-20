@@ -16,25 +16,25 @@ They are built for businesses where the money goes out long before it comes back
 One command. It works with Claude Code, Cursor, Codex, Gemini CLI, OpenCode and most other coding agents.
 
 ```bash
-npx skills add flyweel-production/Flyweel-Skills
+npx skills add flyweel-production/flyweel-skills
 ```
 
 Just one skill:
 
 ```bash
-npx skills add flyweel-production/Flyweel-Skills --skill flyweel-card-top-up
+npx skills add flyweel-production/flyweel-skills --skill flyweel-card-top-up
 ```
 
 See what is in the box without installing:
 
 ```bash
-npx skills add flyweel-production/Flyweel-Skills --list
+npx skills add flyweel-production/flyweel-skills --list
 ```
 
 As a Claude Code plugin:
 
 ```
-/plugin marketplace add flyweel-production/Flyweel-Skills
+/plugin marketplace add flyweel-production/flyweel-skills
 /plugin install flyweel@flyweel
 ```
 
