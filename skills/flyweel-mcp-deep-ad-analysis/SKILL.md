@@ -33,7 +33,7 @@ These five points are where analyses of this data go wrong.
 
 1. **Take metric and dimension names from the tool, not from memory.** The `query_metrics` description lists them, and they change. Names such as `spend`, `clicks`, `channel`, `campaign` and `week` are typical. Check the list before using any other.
 2. **`conversions` is not the business result.** It counts whatever each campaign's objective tracks, so it mixes leads, installs and clicks on a button. Every response returns `extendedMetricsAvailable`: named results such as `registration`, `leads` or `purchases`. Use the named result that matches what the business sells. If only `conversions` exists, add the `objective` dimension and say what it counts.
-3. **Spend can mix currencies with no label.** Two accounts on one channel may bill in different currencies and the total adds them as if they were one. Add the `currency` dimension to any spend query, and never sum or compare cost figures across currencies. Spend with no currency (null) goes on its own line as "currency not recorded": show it, but never add it to a total or rank it. Counts are safe to add.
+3. **Spend can mix currencies with no label.** Two accounts on one channel may bill in different currencies and the total adds them as if they were one. Add the `currency` dimension to any spend query, and never sum or compare cost figures across currencies. Never convert one currency into another to make a total. Spend with no currency (null) goes on its own line as "currency not recorded": show it, but never add it to a total or rank it. Counts are safe to add.
 4. **CRM goes in its own call.** If no CRM is connected, one CRM query fails the whole batch, ads queries included. A `setupRequired` response means the CRM is not connected. That is a setup step. It is not zero deals. Say so once, pass on the connection link, and answer from ads data.
 5. **A named result may start part-way through the window.** If it is zero and then non-zero, tracking began on that day. Measure cost per result from that day on, and say so.
 
@@ -70,7 +70,7 @@ Example batch for an overview:
       "metrics": ["spend", "registration"],
       "dimensions": ["campaign", "currency"],
       "dateRange": { "preset": "last_30_days" },
-      "filters": { "campaign_status": ["ENABLED"] },
+      "filters": { "campaign_status": ["ENABLED", "ACTIVE"] },
       "orderBy": { "column": "spend", "direction": "desc" },
       "limit": 10
     }
@@ -78,7 +78,7 @@ Example batch for an overview:
 }
 ```
 
-Swap `registration` for the user's own result metric.
+Swap `registration` for the user's own result metric. Status values differ by platform: Google uses `ENABLED`, Meta `ACTIVE`. Check the values the tool returns before filtering on another platform.
 
 ## Playbooks
 

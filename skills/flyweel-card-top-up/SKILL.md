@@ -85,6 +85,7 @@ Take these from what the user said. Where they said nothing, use the default, sa
    - Keep the running balance. **The day the room runs out** is the first day the balance passes the limit. Also note the first day any card passes its own budget.
 9. **Past payments and declines.** Group `payment` rows by their `description`, as written. For each, the days from `occurredAt` to `settledAt` are how long that way of paying takes to open up room. Name each way by its description and that time: "payments marked 'Flyweel Inc.' landed the same minute". List declines from the last 30 days by `declinedReason`:
    - `accountLimitExceeded`: the card was full. A payment or a higher limit fixes it.
+   - `cardLimitExceeded`: that card's own budget was used up. A bigger card budget or the next budget period fixes it. A payment does not.
    - `mccRestrictions`: this card is not allowed to pay that kind of merchant. A payment does not fix it.
    - `expirationMismatch` and the like: the card details were typed wrongly on the platform.
 
@@ -102,7 +103,7 @@ Open with the one line that answers it.
 
 | The user asks | Open with | How to get it |
 |---|---|---|
-| Will anything decline? | Safe, close, or the date the room runs out | Both cases. "Safe" means the room lasts the whole period in the heavy case |
+| Will anything decline? | Safe, close, or the date the room runs out | Both cases. "Safe" means that in the heavy case the room lasts the whole period and no card passes its own budget. A card that passes its budget, or was refused with `cardLimitExceeded` in the last 7 days, makes it "close" at best: name the card and the day |
 | How much do I top up to keep ads running for N days? | The heavy amount and the pay-by date, as the safe answer. Then the normal amount in the next sentence | Charges over the period minus room left, plus the biggest charge as a spare. Give both cases |
 | How long will my balance last? | Both dates in one line: normal and heavy | The day the room runs out in each case |
 | Can I afford to spend X more? | Yes as things stand, or the top-up it needs | Run the forecast with the change. Also give the most extra spend a day that fits: room left over at the end of the normal case, divided by the days |
