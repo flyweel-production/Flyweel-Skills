@@ -1,0 +1,12 @@
+{
+  "name": "flyweel",
+  "description": "Flyweel skills for ad spend, cards and cash payback.",
+  "owner": { "name": "Flyweel", "email": "hello@flyweel.co" },
+  "plugins": [
+    {
+      "name": "flyweel",
+      "source": "./",
+      "description": "Skills for the Flyweel MCP server: ad analysis, card funding checks, scaling decisions and cash payback."
+    }
+  ]
+}
