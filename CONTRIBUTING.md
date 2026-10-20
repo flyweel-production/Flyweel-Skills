@@ -9,6 +9,7 @@ Issues and pull requests are welcome.
 ## Check your change
 
 ```bash
+python3 scripts/check_skills.py   # the six skills, frontmatter and length rules
 npx skills add . --list       # all skills parse
 python3 scripts/readability.py   # reading ease 70 or more, no jargon
 ```
