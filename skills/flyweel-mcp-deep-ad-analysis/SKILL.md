@@ -31,7 +31,7 @@ Card tools belong to the card skills listed at the end.
 
 These five points are where analyses of this data go wrong.
 
-1. **Take metric and dimension names from the tool, not from memory.** The `query_metrics` description lists them, and they change. The core ads set is `spend`, `impressions`, `clicks`, `conversions`, `reach`, `ctr`, `cpc`, `cpm`, `conversion_rate`, `cost_per_conversion`, grouped by `channel`, `account`, `campaign`, `campaign_status`, `objective`, `currency`, `date`, `week`, `month`.
+1. **Take metric and dimension names from the tool, not from memory.** The `query_metrics` description lists them, and they change. Names such as `spend`, `clicks`, `channel`, `campaign` and `week` are typical. Check the list before using any other.
 2. **`conversions` is not the business result.** It counts whatever each campaign's objective tracks, so it mixes leads, installs and clicks on a button. Every response returns `extendedMetricsAvailable`: named results such as `registration`, `leads` or `purchases`. Use the named result that matches what the business sells. If only `conversions` exists, add the `objective` dimension and say what it counts.
 3. **Spend can mix currencies with no label.** Two accounts on one channel may bill in different currencies and the total adds them as if they were one. Add the `currency` dimension to any spend query, and never sum or compare cost figures across currencies. Counts are safe to add.
 4. **CRM goes in its own call.** If no CRM is connected, one CRM query fails the whole batch, ads queries included. A `setupRequired` response means the CRM is not connected. That is a setup step. It is not zero deals. Say so once, pass on the connection link, and answer from ads data.

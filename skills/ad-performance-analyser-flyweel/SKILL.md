@@ -91,7 +91,7 @@ Raise these whenever they appear, asked or not:
 - Use a table for any comparison.
 - State the period and the currency every time.
 - Show change as a signed percentage.
-- Close with numbered actions.
+- Keep it short: one or two tables, then three or four numbered actions. End on the actions.
 - If the data cannot answer the question, say what is missing.
 
 ## Reference files

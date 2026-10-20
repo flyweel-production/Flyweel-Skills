@@ -47,17 +47,62 @@ Restart your agent after installing so it picks the skills up.
 Five of the six skills need the Flyweel MCP server connected to your agent. The server is how the agent reads your data.
 
 1. Have a [Flyweel](https://flyweel.co) account.
-2. Connect the Flyweel MCP server to your agent. In Claude Code:
-   ```bash
-   claude mcp add --transport http flyweel https://api.flyweel.co/functions/v1/mcp-server/mcp
-   ```
-   Then sign in when your agent asks.
-   Installed the Claude Code plugin? Skip this step. The plugin has already added the server.
+2. Connect the Flyweel MCP server to your agent. See [Connect the server](#connect-the-server) below.
 3. Connect at least one ad platform in Flyweel: Google Ads, Meta Ads or TikTok Ads.
 4. For the three card skills, have Flyweel cards set up and paying for your ads.
 5. A connected CRM is optional. With one, the skills can follow a lead all the way to revenue. Without one, they stop at what the ad platform counts and say so.
 
 Not sure what you have connected? Ask your agent "is everything set up right?" and the `flyweel` skill will tell you.
+
+### Connect the server
+
+Pick your agent below. Each one asks you to sign in to Flyweel the first time. There is no key to copy.
+
+**Claude Code.** Installed the plugin? The server is already added. Run `/mcp` and sign in. Otherwise:
+
+```bash
+claude mcp add --transport http flyweel https://api.flyweel.co/functions/v1/mcp-server/mcp
+```
+
+**Cursor.** Add this to `~/.cursor/mcp.json`, then sign in from Settings, MCP:
+
+```json
+{
+  "mcpServers": {
+    "flyweel": { "url": "https://api.flyweel.co/functions/v1/mcp-server/mcp" }
+  }
+}
+```
+
+**VS Code (GitHub Copilot).**
+
+```bash
+code --add-mcp '{"name":"flyweel","type":"http","url":"https://api.flyweel.co/functions/v1/mcp-server/mcp"}'
+```
+
+**Codex.** Adding the server opens the sign-in. If it does not, run `codex mcp login flyweel`.
+
+```bash
+codex mcp add flyweel --url https://api.flyweel.co/functions/v1/mcp-server/mcp
+```
+
+**Gemini CLI.** Add the server, then run `/mcp auth flyweel` inside Gemini to sign in.
+
+```bash
+gemini mcp add --transport http flyweel https://api.flyweel.co/functions/v1/mcp-server/mcp
+```
+
+**OpenCode.** Add this to `opencode.json`, then run `opencode mcp auth flyweel`:
+
+```json
+{
+  "mcp": {
+    "flyweel": { "type": "remote", "url": "https://api.flyweel.co/functions/v1/mcp-server/mcp" }
+  }
+}
+```
+
+**Any other agent.** Add a remote MCP server of type HTTP with the address `https://api.flyweel.co/functions/v1/mcp-server/mcp`. Sign in when it asks.
 
 ## Two kinds of money
 
