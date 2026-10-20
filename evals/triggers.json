@@ -1,0 +1,93 @@
+{
+  "note": "Routing check. For each question, which skill should load, from the six descriptions alone. null means none should. Run after changing any description.",
+  "questions": [
+    {
+      "query": "Will my Meta card decline before the weekend?",
+      "expected_skill": "flyweel-card-top-up"
+    },
+    {
+      "query": "How much should I put on the card to keep ads running for a month?",
+      "expected_skill": "flyweel-card-top-up"
+    },
+    {
+      "query": "Why was my Google charge declined yesterday?",
+      "expected_skill": "flyweel-card-top-up"
+    },
+    {
+      "query": "Do I need a higher card limit?",
+      "expected_skill": "flyweel-card-top-up"
+    },
+    {
+      "query": "Did last quarter's ad spend actually make us money?",
+      "expected_skill": "flyweel-real-cash-payback"
+    },
+    {
+      "query": "What does a signed customer really cost us from ads?",
+      "expected_skill": "flyweel-real-cash-payback"
+    },
+    {
+      "query": "How much ad cash is still out there waiting to come back?",
+      "expected_skill": "flyweel-real-cash-payback"
+    },
+    {
+      "query": "Should I put more into TikTok or Meta this week?",
+      "expected_skill": "flyweel-where-to-spend-next"
+    },
+    {
+      "query": "We need to save 1,000 a week on ads. What do I cut?",
+      "expected_skill": "flyweel-where-to-spend-next"
+    },
+    {
+      "query": "Give me a weekly review of my Google and Meta campaigns.",
+      "expected_skill": "flyweel-mcp-deep-ad-analysis"
+    },
+    {
+      "query": "Which of my campaigns has the worst cost per lead right now?",
+      "expected_skill": "flyweel-mcp-deep-ad-analysis"
+    },
+    {
+      "query": "Is any of my ad traffic going to a site I don't own?",
+      "expected_skill": "flyweel-mcp-deep-ad-analysis"
+    },
+    {
+      "query": "Here's a LinkedIn Ads export. What's going on with it?",
+      "expected_skill": "ad-performance-analyser-flyweel"
+    },
+    {
+      "query": "I pasted our numbers from last month below. Write me a report.",
+      "expected_skill": "ad-performance-analyser-flyweel"
+    },
+    {
+      "query": "What can you do with my Flyweel data?",
+      "expected_skill": "flyweel"
+    },
+    {
+      "query": "Connect my TikTok ads account.",
+      "expected_skill": "flyweel"
+    },
+    {
+      "query": "Give me a Monday morning rundown.",
+      "expected_skill": "flyweel"
+    },
+    {
+      "query": "Write five headlines for our summer sale ad.",
+      "expected_skill": null
+    },
+    {
+      "query": "How do I install the Meta pixel on my website?",
+      "expected_skill": null
+    },
+    {
+      "query": "Explain what CPM means.",
+      "expected_skill": null
+    },
+    {
+      "query": "Draft an email chasing a client for an overdue invoice.",
+      "expected_skill": null
+    },
+    {
+      "query": "Build me a new Google Ads campaign for plumbing leads.",
+      "expected_skill": null
+    }
+  ]
+}
