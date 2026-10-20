@@ -30,7 +30,7 @@ Edge case: when one platform bills the card in two currencies, it is two lines, 
 
 ## Steps
 
-1. **Setup.** `get_setup_status`, then `list_cards`. If `cardsSetUp` is false, say so and stop. That is not zero spend. If `query_metrics` later reports a platform as not connected while setup status says it is, report both; the line is cannot see either way.
+1. **Setup.** `get_setup_status`, then `list_cards`. If `cardsSetUp` is false, say so and stop. That is not zero spend. If step 5 finds no settled or pending charge in the 42 days, the cards have not paid for any ads yet. Say so first. Then judge each line on platform spend with a cash ratio of 1, and label every amount "platform spend, not card cash". The card's currency is unknown until its first charge, so keep each line in its own currency and convert nothing. Lines with no currency stay **cannot see**, listed without a rank. If `query_metrics` later reports a platform as not connected while setup status says it is, report both; the line is cannot see either way.
 2. **The result to count.** Use the result the user named. Otherwise look at `extendedMetricsAvailable` in any `query_metrics` reply and pick the named result that is not zero and matches what the business sells: `registration`, `leads`, `purchases` or similar. `conversions` is a broad count that mixes installs, clicks and leads; use it only when nothing named exists, with the `objective` dimension, and say what it counts. Say which result was used and why.
 3. **The clock.** The earliest `lastSyncAt` across the connected ad platforms, as a UTC date, is the **last data day**. It may be short, so the **last full day** is the day before it. Every window ends on the last full day, and "the last 42 days" means the 42 days ending there.
 4. **Daily ad spend and results, 42 days.** `query_metrics`, `dataSource: ads`, metrics `spend` and the result, dimensions `date`, `channel`, `currency`. One line per platform; split a platform only if it shows more than one currency.
@@ -70,7 +70,7 @@ Edge case: when one platform bills the card in two currencies, it is two lines, 
 | Platform shows no spend for cash the card paid | **Cannot see**: connect the ad account |
 | Too thin, or after window under 7 days | **Hold**: too early to tell. Say when there will be enough |
 
-Lopsided does not change the call. It adds a review date: the last full day plus 7.
+Too thin outranks every row except zero results. Lopsided does not change the call. It adds a review date: the last full day plus 7.
 
 10. **Amounts.**
    - Add: 20 percent on top of the after window's weekly cash, stated per week in the account's currency, and the extra results that should buy at the after window's cost per result.
