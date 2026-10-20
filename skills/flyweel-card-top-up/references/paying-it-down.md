@@ -2,7 +2,9 @@
 
 Part of flyweel-card-top-up. Terms such as biggest charge, pay-by date, room left and the paces are defined in SKILL.md.
 
-For a monthly spend target bigger than the limit. The target is in the account's currency.
+For a monthly spend target. The target is in the account's currency.
+
+If the target is no more than the limit minus the biggest charge, one payment a month covers it. Say so, give the amount and the day it must land, and skip the rest of this file.
 
 - Daily pace = target divided by 30.
 - Room you can use between payments = limit minus biggest charge. That much room stays free for the biggest charge to land.
