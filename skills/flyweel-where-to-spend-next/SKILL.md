@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Requires the Flyweel MCP server with cards set up and at least one ad platform connected.
 metadata:
   author: Flyweel
-  version: "2.3"
+  version: "2.4"
 ---
 
 # Where to Spend Next
@@ -51,7 +51,7 @@ Edge case: when one platform bills the card in two currencies, it is two lines, 
 8. **Trust checks.** Say these out loud when they bite.
    - **Too thin**: fewer than 10 results in the after window. The call is hold, and the line says what count would be enough.
    - **Lopsided**: more than 40 percent of the after window's results fell in its last 2 days. Say so; the step may be newer than it looks.
-   - **Result tracking started part-way**: zero results on every day before some date, with at least 7 days of real spend (above 10 percent of the after pace) before it. A quiet spell looks the same, so test it on this line alone: its results from that date on, divided by its days with spend from then on, times its zero days with spend before it. A switch also counts, whatever the test gives: another result on the same line, not zero before, falls under 10 percent of its earlier daily average within a day of this one starting. The tracked event was changed; say so. If that comes to 5 or more, or on a switch, tracking started then. Count cash and results only from that date, in both windows, and say so. Under 5 with no switch, keep every day in and say the early zeros may be a quiet spell, not missing tracking. Empty days after the first result do not count; only the run of zeros before it.
+   - **Result tracking started part-way**: zero results on every day before some date, with at least 7 days of real spend (above 10 percent of the after pace) before it. A quiet spell looks the same, so test it on this line alone: its results from that date on, divided by its days with spend from then on, times its zero days with spend before it. A switch also counts, whatever the test gives. That is when another result on the same line (often `conversions`) averaged at least 1 a day over the 14 days before this one started, and over the 7 days from the start averages under 10 percent of that. The tracked event was changed; say so. If that comes to 5 or more, or on a switch, tracking started then. Count cash and results only from that date, in both windows, and say so. Under 5 with no switch, keep every day in and say the early zeros may be a quiet spell, not missing tracking. Empty days after the first result do not count; only the run of zeros before it.
    - **Platform spend far above card cash** (cash ratio under 0.7): something other than these cards paid part of it. No cost figure; say what was seen.
 9. **The call**, one per line:
 
