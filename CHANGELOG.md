@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.3.0
+
+Fixes found by running 2.2.0 on live data.
+
+- `flyweel-mcp-deep-ad-analysis`, `flyweel-real-cash-payback` and `flyweel-where-to-spend-next` 2.3: a switched event counts as tracking starting, whatever the rate test gives. That is when another result on the same line, not zero before, falls under 10 percent of its earlier daily average within a day of this one starting.
+- `flyweel-real-cash-payback` and `flyweel-where-to-spend-next` 2.3: the clock reads each platform's `lastSync` from `get_setup_status`, since `query_metrics` does not return it. `query_metrics` still decides whether a platform is connected.
+- `flyweel-where-to-spend-next` 2.3: a line with no spend in the last 7 days is stopped. It is called Hold at zero, skips the change scan, and goes last when ranking what to cut. Days where both 7-day averages are zero never count as a change.
+- `flyweel-real-cash-payback` 2.3: the figure without a lopsided week takes out that week's results and cash equal to its platform spend times the cash ratio, not the charges dated that week.
+
 ## 2.2.0
 
 Fixes found by running 2.1.0 on live data.

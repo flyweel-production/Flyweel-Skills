@@ -195,6 +195,34 @@
       "prompt": "Meta billed me in AUD for a while and then in USD too. Signups only show up from early September. What did each currency's spend bring back?",
       "expected_output": "Runs the tracking-start test on each currency line alone, not on Meta as a whole. Results per day divide by that line's days with spend. Shows the test figure per line and only marks 'before tracking' on a line that reaches 5.",
       "files": []
+    },
+    {
+      "id": 27,
+      "skill": "flyweel-mcp-deep-ad-analysis",
+      "prompt": "My signups only start on 9 September, and my conversions dropped to nothing that same day. What did each signup really cost?",
+      "expected_output": "Treats the drop in conversions on the day signups start as a switched event, so tracking began that day even if the rate test is under 5. Measures cost per signup from that day and says why.",
+      "files": []
+    },
+    {
+      "id": 28,
+      "skill": "flyweel-where-to-spend-next",
+      "prompt": "One of my Meta accounts stopped spending two weeks ago. What should I do with each platform this week?",
+      "expected_output": "The account with no spend in the last 7 days is stopped: Hold at zero, with the last day it spent. It is not judged as a change or a new line, and goes last in any cut ranking.",
+      "files": []
+    },
+    {
+      "id": 29,
+      "skill": "flyweel-real-cash-payback",
+      "prompt": "Most of my Google conversions came in one week. What does each one cost without that week?",
+      "expected_output": "Shows the figure with and without the week. Without it: takes out that week's results and cash equal to that week's platform spend times the cash ratio, not the card charges dated that week. Says how the cash was taken out.",
+      "files": []
+    },
+    {
+      "id": 30,
+      "skill": "flyweel-real-cash-payback",
+      "prompt": "How fresh is this data? Answer my payback question from the latest day you can.",
+      "expected_output": "Reads each platform's lastSync from get_setup_status, takes the earliest across connected platforms as the last data day, and the day before as the last full day. Says the dates.",
+      "files": []
     }
   ]
 }
