@@ -139,6 +139,41 @@
       "prompt": "What's our real cost per lead, and how long does ad spend take to come back?",
       "expected_output": "Card cash per platform at the deepest depth the data supports, with the check that stopped a deeper one. Days from card charge to result, and says a negative number is real. Labels figures Paid and Counted.",
       "files": []
+    },
+    {
+      "id": 19,
+      "skill": "flyweel-card-top-up",
+      "prompt": "My card limit is 1,000 and I already owe 400 on it. I want to spend 1,500 a month on ads. How much do I put in up front so I don't have to keep paying it down?",
+      "expected_output": "The pay-up-front amount adds the 400 already owed: target minus limit, plus the biggest charge, plus the balance. With a biggest charge of 200 that is 1,100, not 700. Credit on the account would take off instead.",
+      "files": []
+    },
+    {
+      "id": 20,
+      "skill": "flyweel-where-to-spend-next",
+      "prompt": "I changed my Meta budget about four weeks ago. Did it pay off?",
+      "expected_output": "Before and after windows are the same length and both sit inside the 42 days fetched. If the change day leaves too few days before it, both windows shrink: before is every day before the change, and after is the same number of days ending on the last full day. Says the window lengths.",
+      "files": []
+    },
+    {
+      "id": 21,
+      "skill": "flyweel-where-to-spend-next",
+      "prompt": "I cut my Google budget in half a few weeks ago and leads got more expensive. What should I do this week?",
+      "expected_output": "Call is Add back to the before level. The amount is the before window's weekly cash minus the after window's (a cut from 100 to 50 a week gives +50), not 20 percent of the after level. Extra results are before minus after results per week.",
+      "files": []
+    },
+    {
+      "id": 22,
+      "skill": "flyweel-real-cash-payback",
+      "prompt": "Meta bills my card in both AUD and USD. What does each lead cost me in each currency?",
+      "expected_output": "Results are queried with the currency dimension. Each currency line's cash is divided by that currency's own results, not by all of Meta's results. Results with no currency count only in Meta's total, never in a per-currency cost.",
+      "files": []
+    },
+    {
+      "id": 23,
+      "skill": "flyweel-mcp-deep-ad-analysis",
+      "prompt": "Leads only started showing in my data about a week into the month. What is my real cost per lead?",
+      "expected_output": "Tests the run of zero days: results per day after the first result, times the zero days with spend. At 5 or more it treats that day as when tracking began and measures from it, saying so. Under 5 it keeps all the spend in and says the early zeros may be a quiet spell. Shows the test figure.",
+      "files": []
     }
   ]
 }

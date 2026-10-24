@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.0
+
+Fixes five places where a skill could give the wrong money figure.
+
+- `flyweel-card-top-up` 2.2: the pay-up-front amount now adds money already owed on the account. Before, it only took off credit, so it came out too low.
+- `flyweel-where-to-spend-next` 2.1: the before window can no longer run past the 42 days of data. When there is too little history before a change, both windows shrink to the same length, and after still ends on the last full day.
+- `flyweel-where-to-spend-next` 2.1: adding back after a cut that hurt is now sized as before weekly cash minus after weekly cash, not 20 percent of the after level.
+- `flyweel-real-cash-payback` 2.1: results are split by currency, so a platform billed in two currencies divides each currency's cash by its own results.
+- `flyweel-mcp-deep-ad-analysis`, `flyweel-real-cash-payback` and `flyweel-where-to-spend-next`: a run of zero results before the first one counts as tracking starting only when the later rate would have given 5 or more results over those days. Otherwise the spend stays in and the answer says the early zeros may be a quiet spell.
+
 ## 2.0.0
 
 First release from this repository.

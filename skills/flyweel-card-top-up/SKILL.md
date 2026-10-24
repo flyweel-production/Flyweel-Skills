@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Requires the Flyweel MCP server with cards set up.
 metadata:
   author: Flyweel
-  version: "2.1"
+  version: "2.2"
 ---
 
 # Card Top-Up
