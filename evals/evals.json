@@ -223,6 +223,13 @@
       "prompt": "How fresh is this data? Answer my payback question from the latest day you can.",
       "expected_output": "Reads each platform's lastSync from get_setup_status, takes the earliest across connected platforms as the last data day, and the day before as the last full day. Says the dates.",
       "files": []
+    },
+    {
+      "id": 31,
+      "skill": "flyweel-mcp-deep-ad-analysis",
+      "prompt": "My Meta leads were zero for a day around when signups picked up. Did my tracking change?",
+      "expected_output": "No switch from one zero day, or from a result that averaged under 1 a day before. Tests the 7-day average from the start against the 14 days before, and shows both figures.",
+      "files": []
     }
   ]
 }

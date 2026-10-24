@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.0
+
+- `flyweel-mcp-deep-ad-analysis`, `flyweel-real-cash-payback` and `flyweel-where-to-spend-next` 2.4: the switch test is pinned down. The other result (often `conversions`) must have averaged at least 1 a day over the 14 days before, and its average over the 7 days from the start must be under 10 percent of that. One quiet day, or a result that was always rare, no longer counts as a switch.
+
 ## 2.3.0
 
 Fixes found by running 2.2.0 on live data.
