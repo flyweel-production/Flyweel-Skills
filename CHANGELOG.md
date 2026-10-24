@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.2.0
+
+Fixes found by running 2.1.0 on live data.
+
+- `flyweel-where-to-spend-next` 2.2: the result is picked for each platform. A platform that does not record the chosen result (Google has no signups) uses its own named result or `conversions`, and is never called zero results. The account's average cost per result is kept per result, and costs are ranked only among lines on the same result.
+- `flyweel-where-to-spend-next` 2.2 and `flyweel-real-cash-payback` 2.2: a platform whose last sync failed, or with no selected accounts, no longer sets the clock.
+- `flyweel-where-to-spend-next` 2.2: the change scan ends on day 36 of the 42, so the last 7-day window ends on the last full day.
+- `flyweel-mcp-deep-ad-analysis` 2.2, `flyweel-real-cash-payback` 2.2 and `flyweel-where-to-spend-next` 2.2: the tracking-start test runs on each platform and currency on its own, and results per day divide by days with spend, not calendar days.
+
 ## 2.1.0
 
 Fixes five places where a skill could give the wrong money figure.
