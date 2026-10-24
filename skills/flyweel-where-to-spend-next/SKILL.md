@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Requires the Flyweel MCP server with cards set up and at least one ad platform connected.
 metadata:
   author: Flyweel
-  version: "2.0"
+  version: "2.1"
 ---
 
 # Where to Spend Next
@@ -41,7 +41,7 @@ Edge case: when one platform bills the card in two currencies, it is two lines, 
    - The card paid but the platform shows no spend, or spend with no currency: **cannot see**. Its weekly cash is its 42-day card cash divided by 6, with any foreign-currency charges changed to the account's currency and added in.
    Real cash for any window = ad spend in that window times the cash ratio, then changed to the account's currency with the card's own rate (card amount divided by foreign amount on the latest settled charge).
 6. **Find the last change.** For each line, go back from the last full day. For each day, compare the average daily spend over the 7 days starting that day with the average over the 7 days before it. Scan from day 8 of the 42 to 7 days before the last full day, so each day has 7 full days on both sides. The **change day** is the latest day where the after average is more than 25 percent above or below the before average, and the window from the change day to the last full day is at least 7 days long, both ends counted. It is the latest change that gets judged, even if the line launched earlier. If no day qualifies, the line is **steady**. If the before average is zero, or under 10 percent of the after average, the line is **new**: it started on the change day, and there is no before window to compare.
-7. **Judge the change.** Take the window from the change day to the last full day (**after**), and the same number of days before it (**before**).
+7. **Judge the change.** Take the window from the change day to the last full day (**after**), and the same number of days just before the change day (**before**). If the 42 days hold fewer days than that before the change day, shorten both: **before** is every day before the change day, and **after** is the same number of days, ending on the last full day.
    - Cost per result in each window = real cash divided by results.
    - **Cost of each extra result** = (cash after minus cash before) divided by (results after minus results before). Only when both went up.
    - Results per week in each window, so the user sees volume as well as cost.
@@ -51,7 +51,7 @@ Edge case: when one platform bills the card in two currencies, it is two lines, 
 8. **Trust checks.** Say these out loud when they bite.
    - **Too thin**: fewer than 10 results in the after window. The call is hold, and the line says what count would be enough.
    - **Lopsided**: more than 40 percent of the after window's results fell in its last 2 days. Say so; the step may be newer than it looks.
-   - **Result tracking started part-way**: zero results on every day before some date, with at least 7 days of real spend (above 10 percent of the after pace) before it. Count cash and results only from that date, in both windows, and say so. Empty days after the first result do not count; only the run of zeros before it.
+   - **Result tracking started part-way**: zero results on every day before some date, with at least 7 days of real spend (above 10 percent of the after pace) before it. A quiet spell looks the same, so test it: results per day from that date on, times the zero days with spend. If that comes to 5 or more, tracking started then. Count cash and results only from that date, in both windows, and say so. Under 5, keep every day in and say the early zeros may be a quiet spell, not missing tracking. Empty days after the first result do not count; only the run of zeros before it.
    - **Platform spend far above card cash** (cash ratio under 0.7): something other than these cards paid part of it. No cost figure; say what was seen.
 9. **The call**, one per line:
 
@@ -74,6 +74,7 @@ Too thin outranks every row except zero results. Lopsided does not change the ca
 
 10. **Amounts.**
    - Add: 20 percent on top of the after window's weekly cash, stated per week in the account's currency, and the extra results that should buy at the after window's cost per result.
+   - Add back after a cut that hurt: the before window's weekly cash minus the after window's weekly cash, not 20 percent. The extra results are the before window's results per week minus the after window's.
    - Trim: back to the before window's weekly cash. Say the weekly cash freed.
    - Cut: the line's weekly cash over its last 14 days, all freed. The same 14 days the cut test used.
    - "Which should I cut first?": rank lines worst first. Zero-result lines at the top, then cannot-see lines by weekly cash, then lines with a cost, dearest first. Give the weekly cash each frees. For a cannot-see line say that cutting it is a guess, since its results are not visible, and that connecting the ad account is the better fix.

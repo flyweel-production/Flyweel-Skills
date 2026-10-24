@@ -1,7 +1,7 @@
 {
   "name": "flyweel",
   "displayName": "Flyweel",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Skills for the Flyweel MCP server: ad analysis, card funding checks, scaling decisions and cash payback.",
   "author": { "name": "Flyweel", "email": "hello@flyweel.co", "url": "https://flyweel.co" },
   "homepage": "https://flyweel.co",

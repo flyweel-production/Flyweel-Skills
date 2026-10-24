@@ -12,7 +12,7 @@ If the target is no more than the limit minus the biggest charge, one payment a 
 - Payment size = daily pace times the days between payments. When the days fall as weekdays with uneven gaps (every 4 days is close to Monday and Thursday), use the longer gap, so each payment covers it.
 - Next payment must land by: day 1 plus (room left minus biggest charge, minus any charge owed now) divided by daily pace, rounded down. Then take off the landing time of the way of paying, as in the pay-by date.
 - At the heavy pace (the heavy paces of all lines, added up), give the days between payments once more, in one sentence. The judgement below is on the normal pace only.
-- Pay once up front instead: target minus limit, plus the biggest charge, minus any credit already on the account. Paid at the start of the month, it leaves room for the biggest charge all month, with no schedule to keep.
+- Pay once up front instead: target minus limit, plus the biggest charge, plus the balance. Money owed adds to it; credit on the account takes off. Paid at the start of the month, it leaves room for the biggest charge all month, with no schedule to keep.
 - Limit that would allow one payment a week: target divided by 4, plus the biggest charge.
 
 Judge it:
