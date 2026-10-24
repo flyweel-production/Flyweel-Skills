@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Requires the Flyweel MCP server with cards set up.
 metadata:
   author: Flyweel
-  version: "2.1"
+  version: "2.2"
 ---
 
 # Real Cash Payback
@@ -69,14 +69,14 @@ Defaults below. Change them when the user's business calls for it, and say so.
 ## Steps
 
 1. **Setup.** `get_setup_status` and `list_ad_accounts`. Setup gaps are findings to report, not reasons to stop.
-2. **The clock.** The earliest `lastSyncAt` across the connected ad platforms, as a UTC date, is the last data day. The **last full day** is the day before it. Every window ends there. A platform counts as connected when the `query_metrics` sync status says so; if setup status disagrees, report both, go with `query_metrics`, and leave that platform's `lastSyncAt` out of the clock. Weeks run Monday to Sunday.
+2. **The clock.** The earliest `lastSyncAt` across the connected ad platforms, as a UTC date, is the last data day. The **last full day** is the day before it. Every window ends there. A platform counts as connected when the `query_metrics` sync status says so; if setup status disagrees, report both, go with `query_metrics`, and leave that platform's `lastSyncAt` out of the clock. A platform whose last sync failed, or that has no selected accounts, sets no clock: report it and leave it out. Weeks run Monday to Sunday.
 3. **Window.** Default the last 90 days, in weeks. Use the user's window if given ("September" is 1 to 30 September). Either way, clip the start to the first card charge and say so: results from before the cards were paying have no cash to set against.
    **No card charge yet.** If the cards have no charge at all, or none in the window, there is no cash to measure. Say so in the first sentence. Skip the cost steps; one ads spend query by platform is enough for the fix list. Give the fix list: which platforms show ad spend that is not on these cards, and that the first answer is possible about two weeks after the first charge. Point to flyweel-mcp-deep-ad-analysis for what the platforms report in the meantime.
 4. **Cash.** `list_card_transactions` over the window, paged until `hasMore` is false. Keep rows of `type: charge` with status settled or pending, by `occurredAt`. Group by platform, and by week for the checks. The answer shows one total per platform; weeks appear only when a check needs them. One line per platform; split a platform only if it bills in two currencies, and change foreign amounts to the card's currency at each charge's own rate.
 5. **Platform results.** `query_metrics`, `dataSource: ads`, the result metric, dimensions `channel`, `currency` and `date`.
 6. **CRM.** Separate call. Each depth's metric by platform and date. Run the checks. Pick each platform's depth.
 7. **Cost.** Covered cash divided by results at the chosen depth. Where a platform is split by currency, divide each line's cash by that line's own results, the ones in the same currency. Results with no currency count in the platform's total only, never in a cost for one currency. For depth 1 also give money back per dollar out. Beside each platform's cash, note what the platform itself reports as spend for the same days; a gap of more than 20 percent is worth one sentence (billing lag, tax, or an account Flyweel cannot see). Platform spend with no currency cannot be compared: say "currency not recorded" and skip the gap check for it.
-   - If the result only starts part-way through the window (zero every day, then not, with at least 7 days of platform spend before), tracking may have begun then. A quiet spell looks the same, so test it: results per day from the first result on, times the zero days with spend. Under 5, keep the earlier cash in and say the early zeros may be a quiet spell. At 5 or more, tracking began then. Count cash from that day, run the Enough and Not lopsided checks on that part only, and show the earlier cash on its own line as "before tracking".
+   - If the result only starts part-way through the window (zero every day, then not, with at least 7 days of platform spend before), tracking may have begun then. A quiet spell looks the same, so test it on each line on its own, one platform in one currency: its results from the first result on, divided by its days with spend from then on, times its zero days with spend before it. Under 5, keep the earlier cash in and say the early zeros may be a quiet spell. At 5 or more, tracking began then. Count cash from that day, run the Enough and Not lopsided checks on that part only, and show the earlier cash on its own line as "before tracking".
    - A platform with cash and zero results, with no shallower depth left, gets its cash and the words "no result recorded". No cost figure.
 8. **Days to come back.** The average date of the results, weighted by count or value, minus the average date of the card charges, weighted by amount. On depths 1 to 3 use mature leads only. A negative number is real and worth saying: platforms often charge the card after the result lands.
 9. **Cash still out.** Depth 1 only: card cash minus revenue landed from the same weeks. On other depths say it cannot be measured yet.

@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Requires the Flyweel MCP server with at least one ad platform connected.
 metadata:
   author: Flyweel
-  version: "2.1"
+  version: "2.2"
 ---
 
 # Flyweel MCP: Ad Analysis
@@ -35,7 +35,7 @@ These five points are where analyses of this data go wrong.
 2. **`conversions` is not the business result.** It counts whatever each campaign's objective tracks, so it mixes leads, installs and clicks on a button. Every response returns `extendedMetricsAvailable`: named results such as `registration`, `leads` or `purchases`. Use the named result that matches what the business sells. If only `conversions` exists, add the `objective` dimension and say what it counts.
 3. **Spend can mix currencies with no label.** Two accounts on one channel may bill in different currencies and the total adds them as if they were one. Add the `currency` dimension to any spend query, and never sum or compare cost figures across currencies. Never convert one currency into another to make a total. Spend with no currency (null) goes on its own line as "currency not recorded": show it, but never add it to a total or rank it. Counts are safe to add.
 4. **CRM goes in its own call.** If no CRM is connected, one CRM query fails the whole batch, ads queries included. A `setupRequired` response means the CRM is not connected. That is a setup step. It is not zero deals. Say so once, pass on the connection link, and answer from ads data.
-5. **A named result may start part-way through the window.** Zero and then non-zero can mean tracking began that day, or just a quiet spell. Test it: results per day from the first result on, times the zero days with spend. At 5 or more, tracking began that day: measure cost per result from that day on, and say so. Under 5, keep all the spend in and say the early zeros may be a quiet spell.
+5. **A named result may start part-way through the window.** Zero and then non-zero can mean tracking began that day, or just a quiet spell. Test each platform and currency on its own: its results from the first result on, divided by its days with spend from then on, times its zero days with spend before it. At 5 or more, tracking began that day: measure cost per result from that day on, and say so. Under 5, keep all the spend in and say the early zeros may be a quiet spell.
 
 Do not start a sync as a reflex. `query_metrics` may start one itself (`syncTriggered` in the response). Quote the last sync time, and offer `trigger_sync` only when the user wants fresher data.
 

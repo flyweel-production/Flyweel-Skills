@@ -174,6 +174,27 @@
       "prompt": "Leads only started showing in my data about a week into the month. What is my real cost per lead?",
       "expected_output": "Tests the run of zero days: results per day after the first result, times the zero days with spend. At 5 or more it treats that day as when tracking began and measures from it, saying so. Under 5 it keeps all the spend in and says the early zeros may be a quiet spell. Shows the test figure.",
       "files": []
+    },
+    {
+      "id": 24,
+      "skill": "flyweel-where-to-spend-next",
+      "prompt": "I run Meta and Google. Which one should I cut first? I count signups.",
+      "expected_output": "Picks the result per platform. Google does not record signups, so it uses Google's own named result or conversions and says so. Google is never called zero results or cut for missing signups. Costs on different results are not ranked against each other.",
+      "files": []
+    },
+    {
+      "id": 25,
+      "skill": "flyweel-where-to-spend-next",
+      "prompt": "My TikTok sync keeps failing. Where should I put more money this week?",
+      "expected_output": "The failed TikTok sync sets no clock: the last data day comes from the platforms that synced. Reports the TikTok failure as a finding.",
+      "files": []
+    },
+    {
+      "id": 26,
+      "skill": "flyweel-real-cash-payback",
+      "prompt": "Meta billed me in AUD for a while and then in USD too. Signups only show up from early September. What did each currency's spend bring back?",
+      "expected_output": "Runs the tracking-start test on each currency line alone, not on Meta as a whole. Results per day divide by that line's days with spend. Shows the test figure per line and only marks 'before tracking' on a line that reaches 5.",
+      "files": []
     }
   ]
 }
